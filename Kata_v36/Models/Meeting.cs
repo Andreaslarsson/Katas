@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Security.Cryptography;
 
 namespace Scheduler.Models
 {
@@ -33,7 +36,12 @@ namespace Scheduler.Models
         {
             string date = Start.ToString("d'/'M'/'yy");
 
-            string info = date;
+            string time = Start.ToString(" h:mm");
+
+            DateTime end = Start + Duration;
+            string timeStop = end.ToString(" h:mm");
+
+            string info = date + time + timeStop;
 
             if (Applicant != null)
                 info += " with: " + Applicant.Name;

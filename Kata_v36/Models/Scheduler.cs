@@ -17,9 +17,9 @@ namespace Scheduler.Models
             UnassignedApplicants = new List<Applicant>();
             CaseWorkers = new List<CaseWorker>();
 
-            string[] randomNames = Helper.GetRandomNames(14, 123);
+            string[] randomNames = Helper.GetRandomNames(24, 123);
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 24; i++)
             {
                 Applicant applicant = new Applicant();
                 applicant.Name = randomNames[i];
@@ -45,7 +45,10 @@ namespace Scheduler.Models
 
                     if (meeting.Applicant == null)
                     {
-                        int randomIndex = 0; //TODO detta är inte slumpat.
+                        Random rand = new Random();
+                        
+
+                        int randomIndex = rand.Next(0, UnassignedApplicants.Count); //TODO detta är inte slumpat.
 
                         meeting.Applicant = UnassignedApplicants[randomIndex];
                         UnassignedApplicants.RemoveAt(randomIndex);

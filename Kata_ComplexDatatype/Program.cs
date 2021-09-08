@@ -35,14 +35,20 @@ namespace OnlineOrderSystem
                 if (choice == 1)
                 {
                     orders.Add(new OnlineOrder("electric bicycle"));
+                    Console.WriteLine("You added a electric bicycle" + " Press enter to add more ");
+                    Console.ReadKey();
                 }
                 else if (choice == 2)
                 {
                     orders.Add(new OnlineOrder("trampoline"));
+                    Console.WriteLine("You added a trampoline" + " Press enter to add more ");
+                    Console.ReadKey();
                 }
                 else if (choice == 3)
                 {
                     orders.Add(new OnlineOrder("bouquet"));
+                    Console.WriteLine("You added a bouquet" + " Press enter to add more ");
+                    Console.ReadKey();
                 }
                 else if (choice == 4)
                 {
@@ -52,18 +58,28 @@ namespace OnlineOrderSystem
                 }
                 else if (choice == 6)
                 {
-                    // TODO lägg till en dictionary itemRecord som har nyckeltyp 'string' och värdetyp 'int'
+                    Dictionary<string, int> itemRecord = new Dictionary<string, int>();
+                    
 
                     foreach (var order in orders)
                     {
-                        
+                        Console.WriteLine(order.Name);
+                        if (itemRecord.ContainsKey(order.Name))
+                        {
+                            itemRecord[order.Name] += 1;
+                        }
+                        else
+                        {
+                            itemRecord[order.Name] = 1;
+                        }
                     }
 
-                    //foreach (var record in itemRecord)
+                    foreach (var record in itemRecord)
                     {
-                        
+                        Console.WriteLine("item:" + record.Key + " amount: " + record.Value);
                     }
                     Console.WriteLine("6: Show amount of each order");
+                    Console.ReadKey();
                 }
                 else if (choice == 7)
                 {
